@@ -1,0 +1,44 @@
+.wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    height: auto;
+    width: 400px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    padding: 10px;
+}
+.creating_btn{
+    display: grid;
+    place-items: center;
+    height: 50px;
+    width: 60%;
+    background-color: #333;
+    font-size: 2rem;
+    letter-spacing: 5px;
+    font-weight: 600;
+    color: #ffff;
+    border-radius: 10px;
+}
+.list_container{
+    display: grid;
+    row-gap: 10px;
+    font-size: 1.6rem;
+}
+.list_element{
+   display: flex;
+   gap: 15px;
+   align-items: center;
+}
+.delete_button{
+    height: 40px;
+    width: 80px;
+    background-color: red;
+    color: #fff;
+    border-radius: 10px;
+}
