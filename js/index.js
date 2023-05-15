@@ -1,36 +1,37 @@
-const div = document.createElement("div");
-const createButton = document.createElement("button");
+const wrapper = document.createElement("div");
+wrapper.classList.add("wrapper");
+document.body.append(wrapper);
 const list = document.createElement("ul");
-const bodyElem = document.body;
-
-div.classList.add("wrapper");
-createButton.classList.add("creating_btn");
 list.classList.add("list_container");
+const createBtn = document.createElement("button");
+createBtn.append("Click To Create");
+createBtn.classList.add("creating_btn");
+wrapper.append(createBtn, list);
 
 function createListItem() {
-  const insertItem = prompt("Enter item to insert");
+  const userInfo = prompt("Enter data");
   const listItem = document.createElement("li");
-  listItemAttr(listItem);
-  const deleteButton = document.createElement("button");
-  deleteButtonAttr(deleteButton);
+  listItem.classList.add("list_element");
+  listItem.append(userInfo);
+  listItem.append(createDeleteBtn());
   list.append(listItem);
-  listItem.append(insertItem, deleteButton);
 }
 
-function deleteButtonAttr(elem) {
-  elem.append("Delete");
-  elem.classList.add("delete_button");
-  elem.addEventListener("click", () => {
-    elem.parentElement.remove();
-  });
+function createDeleteBtn(){
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("delete_button");
+  deleteBtn.append("Click To Delete");
+ return deleteBtn;
 }
 
-function listItemAttr(elem) {
-  elem.classList.add("list_element");
+function delegatedDelete (e){
+  if(e.target.tagName !== 'BUTTON'){
+    return;
+  }
+  e.target.parentElement.remove();
 }
-
-createButton.append("Press to Add");
-bodyElem.append(div);
-div.append(createButton);
-div.append(list);
-createButton.addEventListener("click", createListItem);
+// function deleteElem (event){ 
+//   event.currentTarget.parentElement.remove();
+// }
+createBtn.addEventListener("click", createListItem);
+list.addEventListener('click' , delegatedDelete)
